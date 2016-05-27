@@ -1,6 +1,6 @@
 # salt-router
 
-Salt_router.js 主要功能是跟钉钉 Native 深度结合的一些 API 的封装，在项目中主要解决一些路由上的一些问题以及增加转场等的一些动画，另外还涉及到了 view 之间共享数据，以及多 view 的preload 等功能,API统一支持Promise,方便使用者调用;
+Salt_router.js 主要功能是跟 Native 深度结合的一些 API 的封装，在项目中主要解决一些路由上的一些问题以及增加转场等的一些动画，另外还涉及到了 view 之间共享数据，以及多 view 的preload 等功能,API统一支持Promise,方便使用者调用;
 
 ## APIs
 
