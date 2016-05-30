@@ -1,6 +1,28 @@
 # salt-router
-
+## 简介
 Salt_router.js 主要功能是跟 Native 深度结合的一些 API 的封装，在项目中主要解决一些路由上的一些问题以及增加转场等的一些动画，另外还涉及到了 view 之间共享数据，以及多 view 的preload 等功能,API统一支持Promise,方便使用者调用;
+
+## 使用方式
+目前没有发布npm源，所以使用暂时clone到本地使用,代码中支持两种方式引入
+
+```js
+<script type="text/javascript" src="/xx/xx/salt-router.js"></script>
+
+<script type="text/javascript">
+    window.salt.router.preload({}).then().catch();
+</script>
+
+
+```
+支持Commonjs规范的`require`
+
+```js
+
+var Salt_router = require('salt-router');
+
+// Salt_router.preload
+
+```
 
 ## APIs
 
@@ -141,6 +163,15 @@ Salt_router.postMessage(opt).then().catch();
     获取别的frame 中存入的key,value 数据;
 * 参数
     * key:`String` 存储的数据的key 值;
+
+
+## 依赖
+* Promise 针对不支持promise的浏览器需要单独引入
+* dingTalk 钉钉单独的sdk.js 
+
+
+
+
 
 
 
