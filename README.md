@@ -87,6 +87,7 @@ Salt_router.push({
         url:'xxx', // 跳转的frame 所需要加载的url
         anim:1, // 转场动画,1:从左到右,2:bottom 从下往上;默认1;
         needPost:true // 是否需要发送数据到加载的frame;
+        param:'xxx' // 当needPost 是true的时候发送的数据
 }).then(()=>{}).catch((e)=>{
 })
 
@@ -98,8 +99,9 @@ Salt_router.push({
     * url:`String` 跳转的frame 所需要加载的url
     * anim:`number` 转场动画,1:从左到右,2:bottom 从下往上;默认1;
     * needPost:`bool` 是否需要发送数据到加载的frame;
+    * param:`Object` 当needPost是true的时候发送的数据，直接json对象,以及字符串;数据存储的key就是frame id;
 * 依赖API:dd.ui.nav.push
-* 备注:获取方式从 `getMessage` 中获取 
+* 备注: 发送的数据默认获取从getMessage中获取;
 
     
 ### goBack

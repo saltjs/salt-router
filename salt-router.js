@@ -90,9 +90,9 @@ const Salt_router ={
                 if(opt.needPost){
                     var _objStr;
                     try {
-                        _objStr = JSON.stringify(opt.param)
+                        _objStr = isObj(opt.param)?JSON.stringify(opt.param):opt.param;
                     } catch (e) {
-                        _objStr = e
+                        _objStr = '';
                     }
                     window.localStorage.setItem(opt.id, _objStr)
                 };
