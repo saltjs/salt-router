@@ -100,7 +100,8 @@ const Salt_router ={
                     id:opt.id,
                     url:opt.url,
                     anim: opt.anim,
-                    transit: {
+                    // 目前只有Android支持
+                    transit: { 
                         from: {
                             top: 123,
                             height: 456
