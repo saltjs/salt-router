@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>demo</title>
+<title>demo2</title>
 <meta charset="utf-8">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -12,9 +12,41 @@
 <meta name="apple-mobile-web-app-title" content="">
 <meta name="format-detection" content="telephone=no">
 <meta name="format-detection" content="email=no">
+<script type="text/javascript" src="https://g.alicdn.com/dingding/open-develop/0.6.4/dingtalk-ali.js"></script>
+<script type="text/javascript" src="../lib/zepto.js"></script>
+<script type="text/javascript" src="../salt-router.js"></script>
 </head>
 <body>
-<p>这是demo2的页面</p>
+<p>我是demo2的页面</p>
 <div id="meapp"></div>
+<p>
+    <div id="btn5">点击到demo4</div>
+</p>
+<p>
+    <div id="btn6">点击回到demo1</div>
+    <p>不点击按钮直接返回也是返回到demo1</p>
+</p>
+<script type="text/javascript">
+    // 点击到demo4
+    $('#btn5').on('click',function(){
+        window.salt.router.push({
+            id:'demo4',
+            url:'./demo4.html',
+            anim:1,
+            needPost:false
+        }).then().catch(function(e){
+            if(e.errorCode == 1001){
+                location.href = './demo4.html';
+            }
+        })
+    })
+
+    // 点击回到demo1
+    $('#btn6').on('click',function(){
+        window.salt.router.goBack()
+    })
+
+</script>
+
 </body>
 </html>

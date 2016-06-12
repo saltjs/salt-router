@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>demo</title>
+<title>demo1</title>
 <meta charset="utf-8">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -12,9 +12,59 @@
 <meta name="apple-mobile-web-app-title" content="">
 <meta name="format-detection" content="telephone=no">
 <meta name="format-detection" content="email=no">
+<script type="text/javascript" src="https://g.alicdn.com/dingding/open-develop/0.6.4/dingtalk-ali.js"></script>
+<script type="text/javascript" src="../lib/zepto.js"></script>
+<script type="text/javascript" src="../salt-router.js"></script>
+
 </head>
 <body>
-<p>这是demo1的页面</p>
+<p>我是demo1的页面</p>
 <div id="meapp"></div>
+<p>
+    <div id="btn1">点击到demo2</div>
+</p>
+<p>
+    <div id="btn2">点击到demo3<span style="color:red">发送数据到demo3</span></div>
+</p>
+<script type="text/javascript">
+    // 点击到demo2
+    $('#btn1').on('click',function(){
+        window.salt.router.push({
+            id:'demo2',
+            url:'./demo2.html',
+            anim:1,
+            needPost:false
+        }).then().catch(function(e){
+            if(e.errorCode == 1001){
+                location.href = './demo2.html';
+            }
+        })
+    })
+    // 点击到demo3
+    $('#btn2').on('click',function(){
+        window.salt.router.push({
+            id:'demo3',
+            url:'./demo3.html',
+            anim:1,
+            needPost:true,
+            param:{
+                form:'demo1'
+            }
+        }).then().catch(function(e){
+            if(e.errorCode == 1001){
+                location.href = './demo3.html';
+            }
+        })
+    })
+    // preload demo4
+    // window.salt.router.preload({
+    //     pages:[{id:'demo4',url:'./demo4.html'}]
+    // }).then().catch(function(e){
+    //     if(e.errorCode == 1001){
+    //         console.log('暂不支持preload');
+    //     }
+    // })
+
+</script>
 </body>
 </html>

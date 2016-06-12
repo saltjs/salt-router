@@ -235,11 +235,16 @@ function type(obj) {
 }
 
 function register(name){
-    if(dd.compareVersion('2.7.0', dd.version, true)){
-        return true;
+    if(window.dd){
+        if(dd.compareVersion('2.7.0', dd.version, true)){
+            return true;
+        }else{
+            return false ;
+        }
     }else{
-        return false ;
+        return false;
     }
+    
 }
 
 (function(globalObj){

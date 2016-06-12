@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>demo</title>
+<title>demo4</title>
 <meta charset="utf-8">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -12,11 +12,67 @@
 <meta name="apple-mobile-web-app-title" content="">
 <meta name="format-detection" content="telephone=no">
 <meta name="format-detection" content="email=no">
+<script type="text/javascript" src="https://g.alicdn.com/dingding/open-develop/0.6.4/dingtalk-ali.js"></script>
+<script type="text/javascript" src="../lib/zepto.js"></script>
+<script type="text/javascript" src="../salt-router.js"></script>
 </head>
 <body>
-<p>这是demo4的页面</p>
+<p>我是demo4的页面</p>
 <div id="meapp">
-    
 </div>
+<p>
+    <div id="btn10">点击返回demo2</div>
+</p>
+<p>
+    <div id="btn11">点击返回demo1</div>
+</p>
+<p>
+    <div id="btn12">点击关闭view</div>
+</p>
+<script type="text/javascript">
+            // 点击返回到demo1
+        $('#btn10').on('click',function(){
+            window.salt.router.pop({
+                to:'demo2'
+            }).then().catch(function(e){
+                if(e.errorCode == 1001){
+                    location.href = './demo2.html';
+                }
+
+            })
+        });
+
+        $('#btn11').on('click',function(){
+            window.salt.router.pop({
+                to:'home_page'
+            }).then().catch(function(e){
+                if(e.errorCode == 1001){
+                    location.href = './demo1.html';
+                }
+
+            })
+        })
+        // 关闭当前view
+        $('#btn12').on('click',function(){
+            // window.salt.router.pop({
+            //     to:'demo2'
+            // }).then().catch(function(e){
+            //     if(e.errorCode == 1001){
+            //         location.href = './demo2.html';
+            //     }
+            // })
+            
+            window.salt.router.goBack();
+        })
+
+        var _message = JSON.parse(window.salt.router.getMessage('demo4')) || JSON.parse(window.localStorage.getItem('demo4'))
+        if(_message){
+            $('#meapp').css({
+                color:'red'
+            }).html('我接收到了来自'+_message.form+'的消息')    
+        }
+
+
+</script>
 </body>
 </html>

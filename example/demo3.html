@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>demo</title>
+<title>demo3</title>
 <meta charset="utf-8">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -12,9 +12,76 @@
 <meta name="apple-mobile-web-app-title" content="">
 <meta name="format-detection" content="telephone=no">
 <meta name="format-detection" content="email=no">
+<script type="text/javascript" src="https://g.alicdn.com/dingding/open-develop/0.6.4/dingtalk-ali.js"></script>
+<script type="text/javascript" src="../lib/zepto.js"></script>
+<script type="text/javascript" src="../salt-router.js"></script>
 </head>
 <body>
-<p>这是demo3的页面</p>
+<p>我是demo3的页面</p>
 <div id="meapp"></div>
+<p>
+    <div id="btn7">点击跳转并送数据给demo4</div>
+</p>
+<p>
+    <div id="btn8">点击返回到demo1</div>
+</p>
+<p>
+    <div id="btn9">点击返回并且发送数据给demo2</div>
+</p>
+<script type="text/javascript">
+            // 点击到demo4,并且带数据
+        $('#btn7').on('click',function(){
+            window.salt.router.push({
+                id:'demo4',
+                url:'./demo4.html',
+                anim:2,
+                needPost:true,
+                param:{
+                    form:'demo3'
+                }
+            }).then().catch(function(e){
+                if(e.errorCode == 1001){
+                    location.href = './demo4.html';
+                }
+            })
+        })
+        // 点击返回到demo1
+        $('#btn8').on('click',function(){
+            window.salt.router.pop({
+                to:'home_page'
+            }).then().catch(function(e){
+                if(e.errorCode == 1001){
+                    location.href = './demo1.html';
+                }
+
+            })
+        })
+        // 点击返回并且发送数据到demo2
+        $('#btn9').on('click',function(){
+            // send Data
+            window.salt.router.postMessage({
+                key:'form-demo2',
+                value:'来自demo3'
+            });
+
+            window.salt.router.pop({
+                to:'demo2'
+            }).then().catch(function(e){
+                if(e.errorCode == 1001){
+                    location.href = './demo2.html';
+                }
+
+            })
+        })
+
+        var _message = JSON.parse(window.salt.router.getMessage('demo3')) || JSON.parse(window.localStorage.getItem('demo3'))
+        if(_message){
+            $('#meapp').css({
+                color:'red'
+            }).html('我接收到了来自'+_message.form+'的消息')    
+        }
+
+</script>
+
 </body>
 </html>
