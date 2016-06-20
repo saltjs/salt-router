@@ -158,8 +158,8 @@ salt.router.postMessage(opt).then().catch();
 
 
 ## 依赖
-* Promise 针对不支持promise的浏览器需要单独引入,比如 polyfill 等;[链接](https://github.com/inexorabletash/polyfill)
-* dingTalk 钉钉单独的sdk.js [链接](http://g.alicdn.com/ilw/ding/0.9.9/scripts/dingtalk.js) 
+* Promise 针对不支持promise的浏览器需要单独引入,比如 [polyfill](https://github.com/inexorabletash/polyfill)
+* dingTalk 钉钉单独的 [sdk.js](http://g.alicdn.com/ilw/ding/0.9.9/scripts/dingtalk.js) 
 
 
 
