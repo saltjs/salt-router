@@ -15,6 +15,17 @@ var uglify = require('gulp-uglify');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
+// https://www.npmjs.com/package/gulp-concat/
+var concat = require('gulp-concat');
+// watch uglify
+
+gulp.task('min',function(){
+    gulp.src('salt-router.js')
+    .pipe(concat('salt-router.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('./'))
+})
+
 
 // watch files for changes and reload
 gulp.task('watch', function() {

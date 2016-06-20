@@ -1,6 +1,6 @@
 # salt-router
 ## 简介
-Salt_router.js 主要功能是跟 Native 深度结合的一些 API 的封装，在项目中主要解决一些路由上的一些问题以及增加转场等的一些动画，另外还涉及到了 view 之间共享数据，以及多 view 的preload 等功能,API统一支持Promise,方便使用者调用;
+salt-router.js 主要功能是跟 Native 深度结合的一些 API 的封装，在项目中主要解决一些路由上的一些问题以及增加转场等的一些动画，另外还涉及到了 view 之间共享数据，以及多 view 的preload 等功能,API统一支持Promise,方便使用者调用;
 
 ## 使用方式
 目前没有发布npm源，所以使用暂时clone到本地使用,代码中支持两种方式引入
@@ -13,17 +13,6 @@ Salt_router.js 主要功能是跟 Native 深度结合的一些 API 的封装，�
 </script>
 
 
-```
-支持Commonjs规范的`require`
-
-```js
-
-var Salt_router = require('salt-router');
-
-// Salt_router.preload
-
-```
-
 ## APIs
 
 ### preload
@@ -31,7 +20,7 @@ var Salt_router = require('salt-router');
  
   ```js
  
-    Salt_router.preload({
+    salt.router.preload({
             pages:[{
                 id:'id1', // frame id
                 url:'xxx' // frame url
@@ -60,7 +49,7 @@ var Salt_router = require('salt-router');
 ```js
 
 
-Salt_router.recycle({
+salt.router.recycle({
         id:['a','b'] // frame id
 }).then((data)=>{
         // TODO
@@ -82,7 +71,7 @@ Salt_router.recycle({
 * Demo
 
 ```js
-Salt_router.push({
+salt.router.push({
         id:'xxx', // frame id 
         url:'xxx', // 跳转的frame 所需要加载的url
         anim:1, // 转场动画,1:从左到右,2:bottom 从下往上;默认1;
@@ -109,7 +98,7 @@ Salt_router.push({
 
 ```js
 
-Salt_router.goBack();
+salt.router.goBack();
 
 ```
 * 功能
@@ -122,7 +111,7 @@ Salt_router.goBack();
 
 ```js
 
-    Salt_router.pop({
+    salt.router.pop({
         to:'xxx' // frame id 
     }).then(()=>{
     }).catch((e)=>{
@@ -142,7 +131,7 @@ Salt_router.goBack();
 // @param opt 可以是Array,也可以是Object;
 // @example
 // [{key:'home',value:'123'},{key:'detail',value:'333'}] or {key:'app',value:'111'} 
-Salt_router.postMessage(opt).then().catch();
+salt.router.postMessage(opt).then().catch();
 
 ```
 * 功能
@@ -158,7 +147,7 @@ Salt_router.postMessage(opt).then().catch();
 
 ```js
 
-    Salt_router.getMessage('key');
+    salt.router.getMessage('key');
 
 ```
 * 功能
@@ -168,8 +157,8 @@ Salt_router.postMessage(opt).then().catch();
 
 
 ## 依赖
-* Promise 针对不支持promise的浏览器需要单独引入
-* dingTalk 钉钉单独的sdk.js 
+* Promise 针对不支持promise的浏览器需要单独引入,比如 polyfill 等;[链接](https://github.com/inexorabletash/polyfill)
+* dingTalk 钉钉单独的sdk.js [链接](http://g.alicdn.com/ilw/ding/0.9.9/scripts/dingtalk.js) 
 
 
 
