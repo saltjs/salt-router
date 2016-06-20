@@ -12,6 +12,7 @@ salt-router.js 主要功能是跟 Native 深度结合的一些 API 的封装，�
     window.salt.router.preload({}).then().catch();
 </script>
 
+```
 
 ## APIs
 
