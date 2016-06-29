@@ -6,7 +6,7 @@
      Salt_router.pagePreload({}).then((data)=>{
      }).catch((e)=>{
      })
- */ 
+ */
 
 const Salt_router ={
     /**
@@ -17,7 +17,7 @@ const Salt_router ={
      * data:{
             id: 'id1', // 报告状态的frame id
             status: 0, // frame 状态，0:开始加载;1:加载完成;-1:加载失败;
-            extras: {} // 错误状态的信息，在成功加载时可以忽略     
+            extras: {} // 错误状态的信息，在成功加载时可以忽略
          }
      */
     preload:function(opt){
@@ -56,7 +56,7 @@ const Salt_router ={
             if(register()){
                 if(type(ids) =='array'){
                     dd.ui.nav.recycle({
-                        id:_ids,
+                        ids: ids,
                         onSuccess:function(){
                             resolve('success');
                         },
@@ -101,7 +101,7 @@ const Salt_router ={
                     url:opt.url,
                     anim: opt.anim,
                     // 目前只有Android支持
-                    transit: { 
+                    transit: {
                         from: {
                             top: 123,
                             height: 456
@@ -126,7 +126,7 @@ const Salt_router ={
 
     /**
      * 关闭当前frame
-     * @return 
+     * @return
      */
     goBack:function(){
         dd.biz.navigation.goBack();
@@ -138,7 +138,7 @@ const Salt_router ={
      */
     pop:function(opt){
         // 如果当前frame 中有历史记录，则回退当前frame 历史记录，否则关闭当前frame
-        
+
         return new Promise(function(resolve,reject){
             if(register()){
                 if (opt.to || opt.to == '') {
@@ -179,15 +179,15 @@ const Salt_router ={
         // opt.key,opt.value;支持数组
         var t = this;
         if(type(opt) === 'array'){
-            opt.forEach(function(i,item){
+            opt.forEach(function(item, index){
                 if(t.getMessage(item.key)){
-                    window.localStorage.removeItem(item.key);                    
+                    window.localStorage.removeItem(item.key);
                 }
                 window.localStorage.setItem(item.key,item.value);
             })
         }else if(isObj(opt) && isStr(opt.value)){
             if(t.getMessage(opt.key)){
-                window.localStorage.removeItem(opt.key);                    
+                window.localStorage.removeItem(opt.key);
             }
             window.localStorage.setItem(opt.key,opt.value);
         }else{
@@ -244,7 +244,7 @@ function register(name){
     }else{
         return false;
     }
-    
+
 }
 
 (function(globalObj){
