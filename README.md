@@ -1,13 +1,18 @@
-# salt-router
+# salt-router ![npm version](https://img.shields.io/npm/v/salt-router.svg?style=flat)
 ## 简介
 salt-router.js 主要功能是跟 Native 深度结合的一些 API 的封装，在项目中主要解决一些路由上的一些问题以及增加转场等的一些动画，另外还涉及到了 view 之间共享数据，以及多 view 的preload 等功能,API统一支持Promise,方便使用者调用;
 
 ![](https://static.dingtalk.com/media/lAHOTX2Ie80CmM0BdA_372_664.gif)
 
 ## 使用方式
-目前没有发布npm源，所以使用暂时clone到本地使用,代码中支持两种方式引入
-
+### 引入模块
 ```js
+var Salt_router = require('salt-router');
+Salt_router.preload({}).then().catch();
+```
+
+### 引入外部js
+```
 <script type="text/javascript" src="/xx/xx/salt-router.js"></script>
 
 <script type="text/javascript">
