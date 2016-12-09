@@ -83,8 +83,8 @@ salt.router.push({
         id:'xxx', // frame id 
         url:'xxx', // 跳转的frame 所需要加载的url
         anim:1, // 转场动画,1:从左到右,2:bottom 从下往上;默认1;
-        needPost:true // 是否需要发送数据到加载的frame; 
-        param:'xxx' // 当needPost 是true的时候发送的数据
+        needPost:true, // 是否需要发送数据到加载的frame; 
+        param:'xxx', // 当needPost 是true的时候发送的数据
 }).then(()=>{}).catch((e)=>{
 })
 
