@@ -170,8 +170,47 @@ salt.router.postMessage(opt).then().catch();
 
 
 
+## 场景举例
+### 列表到详情页切换
+列表页A到详情页B的传参方式一般有两种:
+1. 详情页B的地址上带有id参数
 
+以react-router为例，配置route时为`<Route  path="detail/:id" component={DetailPage}>`，那么DetailPage中可以使用`this.props.params.id`取到id发送请求
 
+2. 通过salt-router携带参数
+```
+// 列表页A
+Salt_router.push({
+  id: 'detail',
+  url:'#/detail',
+  needPost: true,
+  param: {
+    id: 'id123',
+  }
+});
+// 详情页B
+const query = JSON.parse(Salt_router.getMessage('detail'));
+console.log(query.id); // 'id123'
+```
 
+### 使用建议
+如未使用preload，建议使用第一种方式获取入参。
 
-
+如使用了preload，由于详情页窗口B返回时不会被销毁，需要监听resume事件来判断详情页窗口是否被重新打开/激活（否则会导致详情页数据不会更新），如果被激活了，取一次入参，如果id和当前已加载数据的id不同，再次发请求更新页面。
+```
+const t = this;
+document.addEventListener('resume', () => {
+  const query = JSON.parse(Salt_router.getMessage('detail'));
+  if (query.id != t.currentId) {
+    t.fetchData();
+  } 
+});
+```
+### 仍有问题
+1. 检查api是否加入了jsApiList的配置，见[官方文档](https://open-doc.dingtalk.com/docs/doc.htm?treeId=171&articleId=104910&docType=1)，对应的js api挂在dd.ui.nav命名空间下，如Salt_router.push为dd.ui.nav.push
+2. 全局监听错误信息排查问题
+```
+dd.error(function(error){
+  alert('dd error: ' + JSON.stringify(error));
+});
+```
